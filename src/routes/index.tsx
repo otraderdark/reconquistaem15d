@@ -7,7 +7,6 @@ import {
   Calendar,
   CheckCircle,
   AlertCircle,
-  TrendingUp,
   Target,
   Flame,
   Lock,
