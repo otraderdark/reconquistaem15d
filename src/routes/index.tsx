@@ -12,9 +12,16 @@ import {
   Flame,
   Lock,
   Clock,
+  Frown,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Reconquista em 15 Dias — Método prático para reconstruir postura" },
+      { name: "description", content: "Plano de 15 dias com mensagens prontas, modelos de stories e postura estratégica para mudar a dinâmica após o término." },
+    ],
+  }),
   component: Index,
 });
 
