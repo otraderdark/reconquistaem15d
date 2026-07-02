@@ -34,6 +34,13 @@ function scrollToCta() {
   }
 }
 
+function scrollToHowItWorks() {
+  const el = document.getElementById("como-funciona");
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
+
 function CTAButton({
   children,
   size = "md",
