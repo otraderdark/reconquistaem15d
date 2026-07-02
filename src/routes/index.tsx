@@ -329,7 +329,7 @@ function Timeline() {
   ];
 
   return (
-    <Section>
+    <Section id="como-funciona">
       <div className="text-center">
         <span className="text-xs font-bold tracking-widest text-primary uppercase">
           Como funciona
