@@ -135,7 +135,7 @@ function Hero() {
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row animate-fade-up">
           <CTAButton size="lg">Começar agora</CTAButton>
-          <CTAButton variant="outline" size="lg">
+          <CTAButton variant="outline" size="lg" onClick={scrollToHowItWorks}>
             Ver como funciona
           </CTAButton>
         </div>
