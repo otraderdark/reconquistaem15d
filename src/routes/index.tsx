@@ -146,7 +146,7 @@ function Hero() {
           </div>
           <div className="flex items-center gap-2">
             <Target className="h-4 w-4 text-primary" />
-            <span>5 fases</span>
+            <span>4 fases</span>
           </div>
           <div className="flex items-center gap-2">
             <Lock className="h-4 w-4 text-primary" />
