@@ -167,7 +167,7 @@ function Problem() {
       text: "Cada texto enviado no calor do momento afasta mais do que aproxima.",
     },
     {
-      icon: <TrendingUp className="h-5 w-5" />,
+      icon: <Frown className="h-5 w-5" />,
       title: "Se humilhar",
       text: "Pedir, implorar e justificar só confirma que você não tem mais valor.",
     },
