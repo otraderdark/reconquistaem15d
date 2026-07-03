@@ -350,10 +350,10 @@ function Timeline() {
     <Section id="como-funciona">
       <div className="text-center">
         <span className="text-xs font-bold tracking-widest text-primary uppercase">
-          Como funciona
+          O passo a passo
         </span>
         <h2 className="font-heading mt-4 text-4xl font-semibold text-foreground md:text-5xl">
-          15 dias. 4 fases. Um objetivo.
+          15 dias para ela voltar a te enxergar diferente
         </h2>
       </div>
 
@@ -491,10 +491,10 @@ function Pricing() {
             <Zap className="h-3.5 w-3.5" /> Oferta por tempo limitado
           </span>
           <h2 className="font-heading mt-5 text-4xl font-semibold text-foreground md:text-5xl">
-            Enquanto você pensa, outro cara já está agindo.
+            Enquanto você hesita, outro cara já está ocupando seu lugar.
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Menos que uma pizza para não perder ela de vez. Você decide.
+            Menos que uma pizza para parar de perder ela e ter um plano real para fazê-la voltar. Você decide.
           </p>
         </div>
 
@@ -529,7 +529,7 @@ function Pricing() {
           </ul>
 
           <div className="mt-8">
-            <CTAButton size="lg" className="w-full">
+            <CTAButton size="lg" className="w-full" href="https://pay.kiwify.com.br/Iqgobyg">
               QUERO ACESSO AGORA POR R$ 17,90
             </CTAButton>
           </div>
@@ -576,13 +576,13 @@ function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Hero />
-      <Pricing />
       <Problem />
       <Solution />
       <Features />
       <Timeline />
       <Testimonials />
       <FinalCTA />
+      <Pricing />
       <Footer />
     </main>
   );
