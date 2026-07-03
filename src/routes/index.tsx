@@ -47,12 +47,14 @@ function CTAButton({
   size = "md",
   variant = "primary",
   className = "",
+  href,
   onClick,
 }: {
   children: React.ReactNode;
   size?: "md" | "lg";
   variant?: "primary" | "outline";
   className?: string;
+  href?: string;
   onClick?: () => void;
 }) {
   const sizeClasses =
@@ -65,15 +67,31 @@ function CTAButton({
       ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_40px_-12px_var(--color-glow)]"
       : "border border-border bg-background/50 text-foreground hover:bg-surface";
 
+  const classes = [
+    "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300",
+    sizeClasses,
+    variantClasses,
+    className,
+  ].join(" ");
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classes}
+      >
+        {children}
+        {variant === "primary" && <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />}
+      </a>
+    );
+  }
+
   return (
     <button
       onClick={onClick || scrollToCta}
-      className={[
-        "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300",
-        sizeClasses,
-        variantClasses,
-        className,
-      ].join(" ")}
+      className={classes}
     >
       {children}
       {variant === "primary" && <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />}
