@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+
 import {
   ArrowRight,
   MessageSquare,
@@ -12,6 +12,8 @@ import {
   Lock,
   Clock,
   Frown,
+  Eye,
+  Zap,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -24,7 +26,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const ctaTargetId = "cta-final";
+const ctaTargetId = "oferta";
 
 function scrollToCta() {
   const el = document.getElementById(ctaTargetId);
@@ -415,10 +417,8 @@ function Testimonials() {
 }
 
 function FinalCTA() {
-  const [clicked, setClicked] = useState(false);
-
   return (
-    <Section id={ctaTargetId} className="relative overflow-hidden">
+    <Section id="decisao" className="relative overflow-hidden">
       <GlowingOrb className="left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 bg-primary/25" />
 
       <div className="relative mx-auto max-w-4xl rounded-3xl border border-border bg-gradient-to-b from-surface to-background p-8 text-center md:p-16">
@@ -433,20 +433,10 @@ function FinalCTA() {
         </p>
 
         <div className="mt-10">
-          <CTAButton
-            size="lg"
-            onClick={() => setClicked(true)}
-            className="w-full sm:w-auto"
-          >
+          <CTAButton size="lg" className="w-full sm:w-auto">
             Não! QUERO RECONQUISTAR MINHA EX
           </CTAButton>
         </div>
-
-        {clicked && (
-          <p className="mt-6 text-sm text-muted-foreground">
-            Em breve: tela de pagamento. Por enquanto, reserve sua vaga.
-          </p>
-        )}
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
           <span className="flex items-center gap-1.5">
@@ -459,6 +449,91 @@ function FinalCTA() {
             <CheckCircle className="h-4 w-4 text-primary" /> 7 dias de garantia
           </span>
         </div>
+      </div>
+    </Section>
+  );
+}
+
+
+function Pricing() {
+  const includes = [
+    "Plano diário completo dos 15 dias",
+    "5 mensagens prontas para os momentos-chave",
+    "3 modelos de stories que fazem ela olhar duas vezes",
+    "Guia de postura e reaproximação sem se humilhar",
+    "Bônus: o que NUNCA fazer nos primeiros 7 dias",
+  ];
+
+  return (
+    <Section id="oferta" className="relative overflow-hidden bg-surface/40">
+      <GlowingOrb className="left-1/2 top-0 h-[400px] w-[400px] -translate-x-1/2 bg-primary/25" />
+
+      <div className="relative mx-auto max-w-2xl">
+        <div className="text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold tracking-widest text-primary uppercase">
+            <Zap className="h-3.5 w-3.5" /> Oferta por tempo limitado
+          </span>
+          <h2 className="font-heading mt-5 text-4xl font-semibold text-foreground md:text-5xl">
+            Enquanto você pensa, outro cara já está agindo.
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Menos que uma pizza para não perder ela de vez. Você decide.
+          </p>
+        </div>
+
+        <div className="mt-10 relative rounded-3xl border border-primary/30 bg-gradient-to-b from-surface-raised to-surface p-8 md:p-12 shadow-[0_0_60px_-20px_var(--color-glow)]">
+          <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-1.5 text-xs font-bold tracking-widest text-primary-foreground uppercase">
+              <Flame className="h-3.5 w-3.5" /> 63% OFF hoje
+            </span>
+          </div>
+
+          <div className="text-center">
+            <p className="text-sm font-medium text-muted-foreground line-through">
+              De R$ 47,90
+            </p>
+            <div className="mt-2 flex items-baseline justify-center gap-1">
+              <span className="font-heading text-3xl font-bold text-primary">R$</span>
+              <span className="font-heading text-7xl font-bold text-primary md:text-8xl">17</span>
+              <span className="font-heading text-3xl font-bold text-primary">,90</span>
+            </div>
+            <p className="mt-3 text-base text-muted-foreground">
+              à vista <span className="text-foreground font-semibold">ou 4x de R$ 4,97</span> no cartão
+            </p>
+          </div>
+
+          <ul className="mt-8 space-y-3">
+            {includes.map((item) => (
+              <li key={item} className="flex items-start gap-3 text-sm md:text-base text-foreground">
+                <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-8">
+            <CTAButton size="lg" className="w-full">
+              QUERO ACESSO AGORA POR R$ 17,90
+            </CTAButton>
+          </div>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1.5">
+              <Lock className="h-3.5 w-3.5 text-primary" /> Pagamento seguro
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Clock className="h-3.5 w-3.5 text-primary" /> Acesso imediato
+            </span>
+            <span className="flex items-center gap-1.5">
+              <CheckCircle className="h-3.5 w-3.5 text-primary" /> 7 dias de garantia
+            </span>
+          </div>
+        </div>
+
+        <p className="mt-6 text-center text-sm text-muted-foreground flex items-center justify-center gap-2">
+          <Eye className="h-4 w-4 text-primary" />
+          Pessoas estão vendo essa página agora. A vaga dela ainda é sua.
+        </p>
       </div>
     </Section>
   );
@@ -484,6 +559,7 @@ function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Hero />
+      <Pricing />
       <Problem />
       <Solution />
       <Features />
