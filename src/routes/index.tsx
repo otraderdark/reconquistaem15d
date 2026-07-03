@@ -433,20 +433,10 @@ function FinalCTA() {
         </p>
 
         <div className="mt-10">
-          <CTAButton
-            size="lg"
-            onClick={() => setClicked(true)}
-            className="w-full sm:w-auto"
-          >
+          <CTAButton size="lg" className="w-full sm:w-auto">
             Não! QUERO RECONQUISTAR MINHA EX
           </CTAButton>
         </div>
-
-        {clicked && (
-          <p className="mt-6 text-sm text-muted-foreground">
-            Em breve: tela de pagamento. Por enquanto, reserve sua vaga.
-          </p>
-        )}
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
           <span className="flex items-center gap-1.5">
