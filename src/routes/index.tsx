@@ -426,7 +426,7 @@ function FinalCTA() {
           Decisão
         </span>
         <h2 className="font-heading mt-6 text-4xl font-semibold text-foreground md:text-6xl">
-          Se você continuar não atendendo as expectativas dela, outro cara vai fazer.
+          Se você continuar não atendendo as expectativas dela, outro cara vai fazer isso.
         </h2>
         <p className="mt-6 text-xl font-medium text-muted-foreground md:text-2xl">
           Você vai mesmo deixar isso acontecer?
