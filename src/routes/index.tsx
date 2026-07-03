@@ -417,10 +417,8 @@ function Testimonials() {
 }
 
 function FinalCTA() {
-  const [clicked, setClicked] = useState(false);
-
   return (
-    <Section id={ctaTargetId} className="relative overflow-hidden">
+    <Section id="decisao" className="relative overflow-hidden">
       <GlowingOrb className="left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 bg-primary/25" />
 
       <div className="relative mx-auto max-w-4xl rounded-3xl border border-border bg-gradient-to-b from-surface to-background p-8 text-center md:p-16">
