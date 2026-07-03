@@ -152,7 +152,7 @@ function Hero() {
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row animate-fade-up">
-          <CTAButton size="lg">Começar agora</CTAButton>
+          <CTAButton size="lg" href="https://pay.kiwify.com.br/Iqgobyg">Começar agora</CTAButton>
           <CTAButton variant="outline" size="lg" onClick={scrollToHowItWorks}>
             Ver como funciona
           </CTAButton>
@@ -245,7 +245,7 @@ function Problem() {
       </div>
 
       <div className="mt-12 text-center">
-        <CTAButton size="lg">Quero parar de errar</CTAButton>
+        <CTAButton size="lg" href="https://pay.kiwify.com.br/Iqgobyg">Quero parar de errar</CTAButton>
       </div>
     </Section>
   );
@@ -268,7 +268,7 @@ function Solution() {
             Sem teorias. Sem coach motivacional. Um método direto com mensagens, stories e atitudes para você parar de afastar e começar a aproximar.
           </p>
           <div className="mt-10">
-            <CTAButton size="lg">Acessar o método</CTAButton>
+            <CTAButton size="lg" href="https://pay.kiwify.com.br/Iqgobyg">Acessar o método</CTAButton>
           </div>
         </div>
       </div>
@@ -450,7 +450,7 @@ function FinalCTA() {
         </p>
 
         <div className="mt-10">
-          <CTAButton size="lg" className="w-full sm:w-auto">
+          <CTAButton size="lg" className="w-full sm:w-auto" href="https://pay.kiwify.com.br/Iqgobyg">
             Não! QUERO RECONQUISTAR MINHA EX
           </CTAButton>
         </div>
