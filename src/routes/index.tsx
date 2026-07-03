@@ -26,7 +26,7 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const ctaTargetId = "cta-final";
+const ctaTargetId = "oferta";
 
 function scrollToCta() {
   const el = document.getElementById(ctaTargetId);
