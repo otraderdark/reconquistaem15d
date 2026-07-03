@@ -559,6 +559,7 @@ function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Hero />
+      <Pricing />
       <Problem />
       <Solution />
       <Features />
