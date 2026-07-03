@@ -47,12 +47,14 @@ function CTAButton({
   size = "md",
   variant = "primary",
   className = "",
+  href,
   onClick,
 }: {
   children: React.ReactNode;
   size?: "md" | "lg";
   variant?: "primary" | "outline";
   className?: string;
+  href?: string;
   onClick?: () => void;
 }) {
   const sizeClasses =
@@ -65,15 +67,31 @@ function CTAButton({
       ? "bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_40px_-12px_var(--color-glow)]"
       : "border border-border bg-background/50 text-foreground hover:bg-surface";
 
+  const classes = [
+    "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300",
+    sizeClasses,
+    variantClasses,
+    className,
+  ].join(" ");
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classes}
+      >
+        {children}
+        {variant === "primary" && <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />}
+      </a>
+    );
+  }
+
   return (
     <button
       onClick={onClick || scrollToCta}
-      className={[
-        "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300",
-        sizeClasses,
-        variantClasses,
-        className,
-      ].join(" ")}
+      className={classes}
     >
       {children}
       {variant === "primary" && <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />}
@@ -130,12 +148,11 @@ function Hero() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl animate-fade-up">
-          Plano prático com mensagens, stories e postura para mudar o caos na
-          mente da sua ex e fazer ela enxergar você diferente.
+          Um passo a passo com mensagens prontas, modelos de stories e postura certa para você parar de ser ignorado e fazer ela voltar a te enxergar como antes.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row animate-fade-up">
-          <CTAButton size="lg">Começar agora</CTAButton>
+          <CTAButton size="lg" href="https://pay.kiwify.com.br/Iqgobyg">Começar agora</CTAButton>
           <CTAButton variant="outline" size="lg" onClick={scrollToHowItWorks}>
             Ver como funciona
           </CTAButton>
@@ -164,33 +181,33 @@ function Problem() {
   const errors = [
     {
       icon: <MessageSquare className="h-5 w-5" />,
-      title: "Mensagem por impulso",
-      text: "Cada texto enviado no calor do momento afasta mais do que aproxima.",
+      title: "Mensagem no impulso",
+      text: "Cada texto que você manda no calor da emoção é um empurrão na direção de outro cara.",
     },
     {
       icon: <Frown className="h-5 w-5" />,
       title: "Se humilhar",
-      text: "Pedir, implorar e justificar só confirma que você não tem mais valor.",
+      text: "Pedir, implorar e justificar só mostra que você não tem mais valor. E ela sente.",
     },
     {
       icon: <Smartphone className="h-5 w-5" />,
-      title: "Exagerar nos stories",
-      text: "Postar de propósito para ela ver é sinal de desespero. Ela percebe.",
+      title: "Stories forçados",
+      text: "Postar de propósito para ela ver é desespero disfarçado. Ela percebe e perde o respeito.",
     },
     {
       icon: <AlertCircle className="h-5 w-5" />,
       title: "Correr atrás",
-      text: "Quanto mais você persegue, mais ela corre. Regra básica de atração.",
+      text: "Quanto mais você persegue, mais ela corre. Quem corre atrás nunca é desejado.",
     },
     {
       icon: <Flame className="h-5 w-5" />,
       title: "Demonstrar desespero",
-      text: "Desespero é repelente. Quem age assim, some da lista de desejos.",
+      text: "Desespero é repelente. Ela não volta para quem parece perdido sem ela.",
     },
     {
       icon: <Target className="h-5 w-5" />,
-      title: "Perder valor percebido",
-      text: "Erros repetidos destrói a forma como ela te enxerga. E recuperar isso tem método.",
+      title: "Deixar outro ocupar seu lugar",
+      text: "Erros repetidos destroem o valor que ela via em você. E recuperar isso tem uma ordem certa.",
     },
   ];
 
@@ -198,13 +215,13 @@ function Problem() {
     <Section className="bg-surface/50">
       <div className="mx-auto max-w-3xl text-center">
         <span className="text-xs font-bold tracking-widest text-primary uppercase">
-          O problema
+          O erro que custa caro
         </span>
         <h2 className="font-heading mt-4 text-4xl font-semibold text-foreground md:text-5xl">
-          Você está cometendo erros que a afastam sem perceber
+          Cada atitude errada que você tem agora é um passo que você dá para outro cara
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
-          A maioria dos homens age no emocional e joga o jogo dela. Quem controla a postura é quem vence.
+          Enquanto você reage no emocional, ela observa. E quem não vê valor em você, começa a enxergar em outro.
         </p>
       </div>
 
@@ -228,7 +245,7 @@ function Problem() {
       </div>
 
       <div className="mt-12 text-center">
-        <CTAButton size="lg">Quero parar de errar</CTAButton>
+        <CTAButton size="lg" href="https://pay.kiwify.com.br/Iqgobyg">Quero parar de errar</CTAButton>
       </div>
     </Section>
   );
@@ -245,13 +262,13 @@ function Solution() {
             A solução
           </span>
           <h2 className="font-heading mt-4 text-4xl font-semibold text-foreground md:text-5xl lg:text-6xl">
-            Um plano de 15 dias para mudar sua postura e fazer ela mudar de ideia
+            15 dias para você recuperar o controle e fazer ela querer voltar
           </h2>
           <p className="mt-6 text-lg text-muted-foreground">
-            Sem teorias infinitas. Sem coach motivacional. Um passo a passo com mensagens, stories e atitudes para você recuperar o controle e reverter a situação.
+            Sem teorias. Sem coach motivacional. Um método direto com mensagens, stories e atitudes para você parar de afastar e começar a aproximar.
           </p>
           <div className="mt-10">
-            <CTAButton size="lg">Acessar o método</CTAButton>
+            <CTAButton size="lg" href="https://pay.kiwify.com.br/Iqgobyg">Acessar o método</CTAButton>
           </div>
         </div>
       </div>
@@ -333,10 +350,10 @@ function Timeline() {
     <Section id="como-funciona">
       <div className="text-center">
         <span className="text-xs font-bold tracking-widest text-primary uppercase">
-          Como funciona
+          O passo a passo
         </span>
         <h2 className="font-heading mt-4 text-4xl font-semibold text-foreground md:text-5xl">
-          15 dias. 4 fases. Um objetivo.
+          15 dias para ela voltar a te enxergar diferente
         </h2>
       </div>
 
@@ -433,7 +450,7 @@ function FinalCTA() {
         </p>
 
         <div className="mt-10">
-          <CTAButton size="lg" className="w-full sm:w-auto">
+          <CTAButton size="lg" className="w-full sm:w-auto" href="https://pay.kiwify.com.br/Iqgobyg">
             Não! QUERO RECONQUISTAR MINHA EX
           </CTAButton>
         </div>
@@ -474,10 +491,10 @@ function Pricing() {
             <Zap className="h-3.5 w-3.5" /> Oferta por tempo limitado
           </span>
           <h2 className="font-heading mt-5 text-4xl font-semibold text-foreground md:text-5xl">
-            Enquanto você pensa, outro cara já está agindo.
+            Enquanto você hesita, outro cara já está ocupando seu lugar.
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Menos que uma pizza para não perder ela de vez. Você decide.
+            Menos que uma pizza para parar de perder ela e ter um plano real para fazê-la voltar. Você decide.
           </p>
         </div>
 
@@ -512,7 +529,7 @@ function Pricing() {
           </ul>
 
           <div className="mt-8">
-            <CTAButton size="lg" className="w-full">
+            <CTAButton size="lg" className="w-full" href="https://pay.kiwify.com.br/Iqgobyg">
               QUERO ACESSO AGORA POR R$ 17,90
             </CTAButton>
           </div>
@@ -559,13 +576,13 @@ function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Hero />
-      <Pricing />
       <Problem />
       <Solution />
       <Features />
       <Timeline />
       <Testimonials />
       <FinalCTA />
+      <Pricing />
       <Footer />
     </main>
   );
