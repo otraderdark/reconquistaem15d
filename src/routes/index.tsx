@@ -121,8 +121,8 @@ function Hero() {
           </span>
         </div>
 
-        <h1 className="font-heading mt-6 text-5xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-7xl lg:text-8xl animate-fade-up">
-          Reconquista em
+        <h1 className="font-heading mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl animate-fade-up">
+          Faça sua ex voltar e te enxergar com desejo em apenas
           <br />
           <span className="text-primary italic">15 Dias</span>
         </h1>
