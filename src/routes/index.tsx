@@ -12,6 +12,8 @@ import {
   Lock,
   Clock,
   Frown,
+  Eye,
+  Zap,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
