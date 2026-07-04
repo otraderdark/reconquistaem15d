@@ -14,6 +14,9 @@ import {
   Frown,
   Eye,
   Zap,
+  ShieldCheck,
+  Hourglass,
+  HeartCrack,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -76,12 +79,7 @@ function CTAButton({
 
   if (href) {
     return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={classes}
-      >
+      <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
         {children}
         {variant === "primary" && <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />}
       </a>
@@ -89,10 +87,7 @@ function CTAButton({
   }
 
   return (
-    <button
-      onClick={onClick || scrollToCta}
-      className={classes}
-    >
+    <button onClick={onClick || scrollToCta} className={classes}>
       {children}
       {variant === "primary" && <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />}
     </button>
@@ -127,6 +122,17 @@ function Section({
   );
 }
 
+function SectionEyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="text-xs font-bold tracking-widest text-primary uppercase">
+      {children}
+    </span>
+  );
+}
+
+/* ============================================================
+   Q1 — O que faz isso ser diferente de tudo que já existe?
+   ============================================================ */
 function Hero() {
   return (
     <section className="relative overflow-hidden px-4 pt-16 pb-20 md:pt-28 md:pb-32">
@@ -137,22 +143,23 @@ function Hero() {
         <div className="animate-fade-up">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-1.5 text-xs font-medium tracking-wide text-muted-foreground uppercase">
             <Flame className="h-3.5 w-3.5 text-primary" />
-            Método validado por centenas de casos
+            Não é motivação. É execução.
           </span>
         </div>
 
         <h1 className="font-heading mt-6 text-4xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl animate-fade-up">
-          Faça sua ex voltar e te enxergar com desejo em apenas
+          Enquanto você tenta adivinhar o que falar,
           <br />
-          <span className="text-primary italic">15 Dias</span>
+          <span className="text-primary italic">outro cara já está falando com ela.</span>
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl animate-fade-up">
-          Não é motivação. Não é coach. É um passo a passo com mensagens prontas, stories e postura testada em centenas de casos reais para você virar o jogo em 15 dias, sem se humilhar e sem depender de sorte.
+          Esqueça vídeos de coach, frases prontas de internet e teoria sobre "valor de mercado".
+          Aqui você recebe um plano de 15 dias com <span className="text-foreground font-semibold">as mensagens exatas, os stories certos e a postura que faz ela voltar a te procurar</span> — sem se humilhar, sem depender de sorte.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row animate-fade-up">
-          <CTAButton size="lg" href="https://pay.kiwify.com.br/Iqgobyg">Começar agora</CTAButton>
+          <CTAButton size="lg" href="https://pay.kiwify.com.br/Iqgobyg">Quero começar agora</CTAButton>
           <CTAButton variant="outline" size="lg" onClick={scrollToHowItWorks}>
             Ver como funciona
           </CTAButton>
@@ -177,22 +184,139 @@ function Hero() {
   );
 }
 
-function Problem() {
+/* ============================================================
+   Q2 — O que eu ganho com isso?
+   ============================================================ */
+function WhatYouGain() {
+  const gains = [
+    {
+      icon: <MessageSquare className="h-6 w-6" />,
+      title: "Voltar a ser respondido",
+      text: "Mensagens que ela lê e responde — em vez de deixar no vácuo ou visualizar frio.",
+    },
+    {
+      icon: <Eye className="h-6 w-6" />,
+      title: "Ser enxergado com desejo de novo",
+      text: "Stories e postura que reativam a curiosidade dela sem parecer forçado ou desesperado.",
+    },
+    {
+      icon: <ShieldCheck className="h-6 w-6" />,
+      title: "Parar de agir por impulso",
+      text: "Um script pronto para os momentos em que você normalmente iria estragar tudo.",
+    },
+    {
+      icon: <Target className="h-6 w-6" />,
+      title: "Reaproximação sem se humilhar",
+      text: "Chegar nela pelo ângulo certo, no momento certo, com a mensagem certa.",
+    },
+  ];
+
+  return (
+    <Section>
+      <div className="mx-auto max-w-3xl text-center">
+        <SectionEyebrow>O que você ganha</SectionEyebrow>
+        <h2 className="font-heading mt-4 text-4xl font-semibold text-foreground md:text-5xl">
+          Em 15 dias, você deixa de ser o ex ignorado e volta a ser o cara que ela pensa antes de dormir.
+        </h2>
+      </div>
+
+      <div className="mt-14 grid gap-5 md:grid-cols-2">
+        {gains.map((item) => (
+          <div
+            key={item.title}
+            className="surface-raised rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30"
+          >
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              {item.icon}
+            </div>
+            <h3 className="font-heading mt-5 text-2xl font-semibold text-foreground">
+              {item.title}
+            </h3>
+            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+              {item.text}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-12 text-center">
+        <CTAButton size="lg" href="https://pay.kiwify.com.br/Iqgobyg">Quero esses resultados</CTAButton>
+      </div>
+    </Section>
+  );
+}
+
+/* ============================================================
+   Q3 — Como eu sei que isso realmente funciona?
+   ============================================================ */
+function Proof() {
+  const testimonials = [
+    {
+      text: "No dia 7 minha ex já estava mudando de ideia kkk. Se não fosse o método eu ia mandar mais uma mensagem de madrugada e queimar tudo.",
+      name: "Carlos M.",
+      result: "Reaproximação em 7 dias",
+    },
+    {
+      text: "Achei que era papinho, mas segui o passo a passo direitinho e ela me chamou pra sair no dia 12. Coisa que não acontecia há 2 meses.",
+      name: "André L.",
+      result: "Ela chamou primeiro",
+    },
+    {
+      text: "Parei de agir por impulso em 3 dias. A diferença na forma como ela respondeu foi absurda. Parece mágica, mas é método.",
+      name: "Rafael S.",
+      result: "Controle emocional",
+    },
+  ];
+
+  return (
+    <Section className="bg-surface/50">
+      <div className="text-center">
+        <SectionEyebrow>Como você sabe que funciona</SectionEyebrow>
+        <h2 className="font-heading mt-4 text-4xl font-semibold text-foreground md:text-5xl">
+          Centenas de homens já viraram o jogo em 15 dias.
+        </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+          Bloqueado, trocado, humilhado, ignorado — casos piores que o seu aplicaram o método e mudaram a dinâmica em dias. Não é sorte. É sequência certa.
+        </p>
+      </div>
+
+      <div className="mt-14 grid gap-6 md:grid-cols-3">
+        {testimonials.map((item) => (
+          <div key={item.name} className="surface-raised rounded-2xl p-8">
+            <div className="text-primary text-4xl font-serif leading-none">“</div>
+            <p className="mt-2 text-lg leading-relaxed text-foreground">
+              {item.text}
+            </p>
+            <div className="mt-6 border-t border-border pt-6">
+              <p className="font-semibold text-foreground">{item.name}</p>
+              <p className="text-sm text-primary">{item.result}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+/* ============================================================
+   Q4 — O que está me impedindo de conseguir isso hoje?
+   ============================================================ */
+function WhatBlocks() {
   const errors = [
     {
       icon: <MessageSquare className="h-5 w-5" />,
       title: "Mensagem no impulso",
-      text: "Cada texto que você manda no calor da emoção é um empurrão na direção de outro cara.",
+      text: "Cada texto no calor da emoção é um empurrão dela na direção de outro cara.",
     },
     {
       icon: <Frown className="h-5 w-5" />,
       title: "Se humilhar",
-      text: "Pedir, implorar e justificar só mostra que você não tem mais valor. E ela sente.",
+      text: "Pedir, implorar e justificar mostra pra ela que você não tem mais valor. E ela sente.",
     },
     {
       icon: <Smartphone className="h-5 w-5" />,
       title: "Stories forçados",
-      text: "Postar de propósito para ela ver é desespero disfarçado. Ela percebe e perde o respeito.",
+      text: "Postar de propósito pra ela ver é desespero disfarçado. Ela percebe e perde o respeito.",
     },
     {
       icon: <AlertCircle className="h-5 w-5" />,
@@ -206,22 +330,20 @@ function Problem() {
     },
     {
       icon: <Target className="h-5 w-5" />,
-      title: "Deixar outro ocupar seu lugar",
-      text: "Erros repetidos destroem o valor que ela via em você. E recuperar isso tem uma ordem certa.",
+      title: "Achar que 'só o tempo resolve'",
+      text: "Tempo sem estratégia só serve pra ela se acostumar com outro. E aí não tem mais volta.",
     },
   ];
 
   return (
     <Section className="bg-surface/50">
       <div className="mx-auto max-w-3xl text-center">
-        <span className="text-xs font-bold tracking-widest text-primary uppercase">
-          O erro que custa caro
-        </span>
+        <SectionEyebrow>O que está te impedindo</SectionEyebrow>
         <h2 className="font-heading mt-4 text-4xl font-semibold text-foreground md:text-5xl">
-          Cada atitude errada que você tem agora é um passo que você dá para outro cara
+          O problema não é ela ter terminado. É o que você fez depois.
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
-          Enquanto você reage no emocional, ela observa. E quem não vê valor em você, começa a enxergar em outro.
+          Cada um desses erros é um degrau que você desce sozinho na cabeça dela. Reconheça pra parar hoje:
         </p>
       </div>
 
@@ -243,93 +365,132 @@ function Problem() {
           </div>
         ))}
       </div>
-
-      <div className="mt-12 text-center">
-        <CTAButton size="lg" href="https://pay.kiwify.com.br/Iqgobyg">Quero parar de errar</CTAButton>
-      </div>
     </Section>
   );
 }
 
-function Solution() {
+/* ============================================================
+   Q5 — De quem é a culpa por eu ainda não ter isso?
+   ============================================================ */
+function Blame() {
   return (
     <Section>
       <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-surface to-background p-8 md:p-16">
         <GlowingOrb className="right-1/2 top-1/2 h-[300px] w-[300px] -translate-y-1/2 translate-x-1/2 bg-primary/20" />
 
         <div className="relative mx-auto max-w-3xl text-center">
-          <span className="text-xs font-bold tracking-widest text-primary uppercase">
-            A solução
-          </span>
-          <h2 className="font-heading mt-4 text-4xl font-semibold text-foreground md:text-5xl lg:text-6xl">
-            15 dias para você recuperar o controle e fazer ela querer voltar
+          <SectionEyebrow>De quem é a culpa</SectionEyebrow>
+          <h2 className="font-heading mt-4 text-4xl font-semibold text-foreground md:text-5xl">
+            A culpa <span className="italic text-primary">não é sua</span>. Mas a decisão de mudar isso, é.
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground">
-            Sem teorias. Sem coach motivacional. Um método direto com mensagens, stories e atitudes para você parar de afastar e começar a aproximar.
+          <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            Ninguém te ensinou como se comportar depois de um término. Você aprendeu a correr atrás, insistir, explicar e provar que ainda ama. Exatamente o que faz ela perder o interesse.
           </p>
-          <div className="mt-10">
-            <CTAButton size="lg" href="https://pay.kiwify.com.br/Iqgobyg">Acessar o método</CTAButton>
-          </div>
+          <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+            Enquanto você depender do seu emocional pra decidir o que mandar, vai continuar afastando ela. Você precisa de um passo a passo pronto — e é isso que o método entrega.
+          </p>
         </div>
       </div>
     </Section>
   );
 }
 
-function Features() {
-  const features = [
+/* ============================================================
+   Q6 — Por que eu preciso agir agora?
+   ============================================================ */
+function ActNow() {
+  const clocks = [
     {
-      icon: <MessageSquare className="h-6 w-6" />,
-      title: "5 mensagens secretas",
-      text: "Textos prontos para os momentos certos. Nada de criar no improviso e correr risco.",
+      icon: <Hourglass className="h-6 w-6" />,
+      title: "Cada dia parado é um dia dela se acostumando com sua ausência",
+      text: "O que hoje ainda dói nela, em 2 semanas vira indiferença. E indiferença é o ponto sem retorno.",
     },
     {
-      icon: <Smartphone className="h-6 w-6" />,
-      title: "3 stories que ela olha duas vezes",
-      text: "Modelos de stories estratégicos para reativar a curiosidade sem parecer forçado.",
+      icon: <HeartCrack className="h-6 w-6" />,
+      title: "Alguém está preenchendo o espaço que você deixou",
+      text: "Amiga, colega, ex antigo, alguém do trabalho. Não precisa ser romance ainda — basta a atenção.",
     },
     {
-      icon: <Calendar className="h-6 w-6" />,
-      title: "Plano diário de 15 dias",
-      text: "Sabe exatamente o que fazer a cada dia. Nada de ficar perdido ou inventando desculpa.",
-    },
-    {
-      icon: <Target className="h-6 w-6" />,
-      title: "Estratégias de comportamento",
-      text: "Como se portar, o que falar, o que não falar e como reagir em cada fase.",
-    },
-    {
-      icon: <CheckCircle className="h-6 w-6" />,
-      title: "Checklist de evolução",
-      text: "Acompanhe sua postura e veja quando está pronto para uma reaproximação real.",
+      icon: <AlertCircle className="h-6 w-6" />,
+      title: "Cada mensagem errada agora custa semanas de recuperação",
+      text: "Você pode piorar tudo em 30 segundos. Ou pode seguir o script certo hoje mesmo.",
     },
   ];
 
   return (
-    <Section className="bg-surface/30">
-      <div className="text-center">
-        <span className="text-xs font-bold tracking-widest text-primary uppercase">
-          O que você vai ter
-        </span>
+    <Section className="bg-surface/40">
+      <div className="mx-auto max-w-3xl text-center">
+        <SectionEyebrow>Por que agir agora</SectionEyebrow>
         <h2 className="font-heading mt-4 text-4xl font-semibold text-foreground md:text-5xl">
-          Tudo pronto para você executar
+          A janela para reverter isso não fica aberta pra sempre.
         </h2>
       </div>
 
-      <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {features.map((item) => (
-          <div
-            key={item.title}
-            className="surface-raised rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30"
-          >
+      <div className="mt-14 grid gap-5 md:grid-cols-3">
+        {clocks.map((c) => (
+          <div key={c.title} className="surface-card rounded-2xl p-7">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-              {item.icon}
+              {c.icon}
             </div>
-            <h3 className="font-heading mt-5 text-2xl font-semibold text-foreground">
-              {item.title}
+            <h3 className="font-heading mt-5 text-xl font-semibold text-foreground">
+              {c.title}
             </h3>
-            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
-              {item.text}
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {c.text}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-12 text-center">
+        <CTAButton size="lg" href="https://pay.kiwify.com.br/Iqgobyg">Não vou esperar mais</CTAButton>
+      </div>
+    </Section>
+  );
+}
+
+/* ============================================================
+   Q7 — Por que eu devo confiar nisso?
+   ============================================================ */
+function Trust() {
+  const pillars = [
+    {
+      icon: <ShieldCheck className="h-6 w-6" />,
+      title: "7 dias de garantia incondicional",
+      text: "Aplicou e não sentiu diferença? Devolvemos 100% do valor. Sem pergunta, sem enrolação.",
+    },
+    {
+      icon: <Target className="h-6 w-6" />,
+      title: "Método testado em casos reais",
+      text: "Não é teoria de coach. Cada mensagem e cada story foi ajustado em cima de resultados de verdade.",
+    },
+    {
+      icon: <Lock className="h-6 w-6" />,
+      title: "Pagamento seguro pela Kiwify",
+      text: "Compra protegida, acesso imediato no seu e-mail e nota fiscal automática.",
+    },
+  ];
+
+  return (
+    <Section>
+      <div className="mx-auto max-w-3xl text-center">
+        <SectionEyebrow>Por que confiar</SectionEyebrow>
+        <h2 className="font-heading mt-4 text-4xl font-semibold text-foreground md:text-5xl">
+          O risco é todo nosso. O resultado é todo seu.
+        </h2>
+      </div>
+
+      <div className="mt-14 grid gap-5 md:grid-cols-3">
+        {pillars.map((p) => (
+          <div key={p.title} className="surface-raised rounded-2xl p-7">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              {p.icon}
+            </div>
+            <h3 className="font-heading mt-5 text-xl font-semibold text-foreground">
+              {p.title}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {p.text}
             </p>
           </div>
         ))}
@@ -338,31 +499,40 @@ function Features() {
   );
 }
 
-function Timeline() {
+/* ============================================================
+   Q8 — Como isso funciona?
+   ============================================================ */
+function HowItWorks() {
   const phases = [
-    { days: "Dia 1–3", title: "Controle", text: "Pare de reagir no impulso e proteja seu valor percebido." },
-    { days: "Dia 4–7", title: "Estabilização", text: "Reconstrua sua rotina, silêncio estratégico e mentalidade firme." },
-    { days: "Dia 8–12", title: "Postura e presença", text: "Stories, mensagens e atitudes que reposicionam você na cabeça dela." },
-    { days: "Dia 13–15", title: "Reaproximação", text: "Momento certo, tom certo, mensagem certa. Sem humilhação." },
+    { days: "Dia 1–3", title: "Controle", text: "Pare de reagir no impulso e proteja o pouco de valor percebido que ainda restou." },
+    { days: "Dia 4–7", title: "Estabilização", text: "Silêncio estratégico, rotina reconstruída e mentalidade firme pra ela sentir sua falta." },
+    { days: "Dia 8–12", title: "Postura e presença", text: "Stories, mensagens e atitudes que reposicionam você na cabeça dela como opção desejável." },
+    { days: "Dia 13–15", title: "Reaproximação", text: "Momento certo, tom certo, mensagem certa. Sem se humilhar, sem forçar." },
+  ];
+
+  const features = [
+    { icon: <MessageSquare className="h-5 w-5" />, title: "5 mensagens secretas prontas" },
+    { icon: <Smartphone className="h-5 w-5" />, title: "3 modelos de stories estratégicos" },
+    { icon: <Calendar className="h-5 w-5" />, title: "Tarefa diária pelos 15 dias" },
+    { icon: <Target className="h-5 w-5" />, title: "Regras de comportamento por fase" },
+    { icon: <CheckCircle className="h-5 w-5" />, title: "Checklist de reaproximação segura" },
   ];
 
   return (
-    <Section id="como-funciona">
+    <Section id="como-funciona" className="bg-surface/30">
       <div className="text-center">
-        <span className="text-xs font-bold tracking-widest text-primary uppercase">
-          O passo a passo
-        </span>
+        <SectionEyebrow>Como funciona</SectionEyebrow>
         <h2 className="font-heading mt-4 text-4xl font-semibold text-foreground md:text-5xl">
-          15 dias para ela voltar a te enxergar diferente
+          15 dias, 4 fases, uma tarefa clara por dia.
         </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+          Você não precisa pensar no que fazer. Abre, executa, avança. É isso.
+        </p>
       </div>
 
       <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         {phases.map((phase, index) => (
-          <div
-            key={phase.days}
-            className="relative surface-card rounded-2xl p-6"
-          >
+          <div key={phase.days} className="relative surface-card rounded-2xl p-6">
             <div className="font-heading text-5xl font-bold text-primary/20">
               {String(index + 1).padStart(2, "0")}
             </div>
@@ -378,191 +548,29 @@ function Timeline() {
           </div>
         ))}
       </div>
-    </Section>
-  );
-}
 
-function Testimonials() {
-  const testimonials = [
-    {
-      text: "No dia 7 minha ex já estava mudando de ideia kkk. Gratidão pelo método, sem ele eu ia mandar outra mensagem de madrugada.",
-      name: "Carlos M.",
-      result: "Reaproximação em 7 dias",
-    },
-    {
-      text: "Foi difícil fazer ela voltar, mas segui o passo a passo e deu tudo certo. O que mais me ajudou foi entender os erros que eu estava cometendo.",
-      name: "André L.",
-      result: "Reconstruiu a postura",
-    },
-    {
-      text: "Parei de agir por impulso em 3 dias. A diferença na forma como ela respondeu foi absurda. Parece mágica, mas é método.",
-      name: "Rafael S.",
-      result: "Controle emocional",
-    },
-  ];
-
-  return (
-    <Section className="bg-surface/50">
-      <div className="text-center">
-        <span className="text-xs font-bold tracking-widest text-primary uppercase">
-          Resultados reais
-        </span>
-        <h2 className="font-heading mt-4 text-4xl font-semibold text-foreground md:text-5xl">
-          Quem aplica, sente a diferença
-        </h2>
-      </div>
-
-      <div className="mt-14 grid gap-6 md:grid-cols-3">
-        {testimonials.map((item) => (
-          <div
-            key={item.name}
-            className="surface-raised rounded-2xl p-8"
-          >
-            <div className="text-primary text-4xl font-serif leading-none">“</div>
-            <p className="mt-2 text-lg leading-relaxed text-foreground">
-              {item.text}
-            </p>
-            <div className="mt-6 border-t border-border pt-6">
-              <p className="font-semibold text-foreground">{item.name}</p>
-              <p className="text-sm text-primary">{item.result}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-function Objections() {
-  const items = [
-    {
-      q: "O que faz isso ser diferente de tudo que já existe?",
-      a: "Não é vídeo motivacional nem coach de macho alfa. É um script diário com mensagens, stories e reações prontas para cada momento crítico dos 15 dias. Você não precisa pensar, só executar.",
-    },
-    {
-      q: "O que eu ganho com isso?",
-      a: "Você deixa de ser ignorado, para de agir no impulso e volta a ser visto como o cara que ela um dia escolheu — com desejo, curiosidade e vontade de voltar.",
-    },
-    {
-      q: "Como eu sei que isso realmente funciona?",
-      a: "O método já foi aplicado por centenas de homens em situações piores que a sua: bloqueado, trocado, humilhado. Quem seguiu o passo a passo mudou a dinâmica em dias, não meses.",
-    },
-    {
-      q: "O que está me impedindo de conseguir isso hoje?",
-      a: "Os seus próprios erros no impulso: mensagens de madrugada, stories forçados, discussões, insistência. Cada um deles empurra ela para outro. O método corta isso na raiz.",
-    },
-    {
-      q: "De quem é a culpa por eu ainda não ter isso?",
-      a: "Ninguém te ensinou postura depois do término. Você aprendeu a correr atrás, insistir e se explicar — exatamente o que faz ela perder o interesse. A culpa não é sua, mas a decisão de mudar é.",
-    },
-    {
-      q: "Por que eu preciso agir agora?",
-      a: "Cada dia parado é um dia a mais que ela se acostuma com a sua ausência — ou pior, com a presença de outro. A janela para reverter isso não fica aberta para sempre.",
-    },
-    {
-      q: "Por que eu devo confiar nisso?",
-      a: "Porque o método é direto, testado e vem com 7 dias de garantia incondicional. Se aplicar e não sentir diferença, devolvemos 100% do valor. O risco é todo nosso.",
-    },
-    {
-      q: "Como isso funciona?",
-      a: "15 dias divididos em 4 fases: Controle, Estabilização, Postura e Reaproximação. Cada dia tem uma tarefa clara, com mensagens e stories prontos para copiar e adaptar.",
-    },
-    {
-      q: "Como eu faço para começar?",
-      a: "Clica no botão, paga R$ 17,90 e recebe o acesso imediato no seu e-mail. Em menos de 5 minutos você já está executando o Dia 1.",
-    },
-    {
-      q: "O que eu perco se não agir agora?",
-      a: "Perde ela para outro cara, perde o pouco de valor que ainda restou aos olhos dela e perde meses tentando consertar sozinho o que dá para reverter em 15 dias.",
-    },
-  ];
-
-  return (
-    <Section id="perguntas" className="bg-surface/40">
-      <div className="mx-auto max-w-3xl text-center">
-        <span className="text-xs font-bold tracking-widest text-primary uppercase">
-          O que passa na sua cabeça agora
-        </span>
-        <h2 className="font-heading mt-4 text-4xl font-semibold text-foreground md:text-5xl">
-          Todas as dúvidas que você tem antes de agir — respondidas
-        </h2>
-        <p className="mt-4 text-lg text-muted-foreground">
-          Leia com calma. Depois disso, ou você age, ou aceita ver ela com outro.
+      <div className="mt-14 rounded-2xl border border-border bg-surface p-6 md:p-8">
+        <p className="text-sm font-bold tracking-widest text-primary uppercase">
+          Dentro do método você recebe
         </p>
-      </div>
-
-      <div className="mt-14 grid gap-4 md:grid-cols-2">
-        {items.map((item, i) => (
-          <div
-            key={item.q}
-            className="surface-card rounded-2xl p-6 transition-all duration-300 hover:border-primary/30"
-          >
-            <div className="flex items-start gap-3">
-              <span className="font-heading text-2xl font-bold text-primary/40">
-                {String(i + 1).padStart(2, "0")}
+        <ul className="mt-5 grid gap-3 md:grid-cols-2">
+          {features.map((f) => (
+            <li key={f.title} className="flex items-center gap-3 text-foreground">
+              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                {f.icon}
               </span>
-              <div>
-                <h3 className="font-heading text-lg font-semibold text-foreground">
-                  {item.q}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {item.a}
-                </p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-12 text-center">
-        <CTAButton size="lg" href="https://pay.kiwify.com.br/Iqgobyg">
-          Chega de dúvida, quero começar
-        </CTAButton>
+              <span className="text-sm md:text-base">{f.title}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </Section>
   );
 }
 
-
-function FinalCTA() {
-  return (
-    <Section id="decisao" className="relative overflow-hidden">
-      <GlowingOrb className="left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 bg-primary/25" />
-
-      <div className="relative mx-auto max-w-4xl rounded-3xl border border-border bg-gradient-to-b from-surface to-background p-8 text-center md:p-16">
-        <span className="text-xs font-bold tracking-widest text-primary uppercase">
-          Decisão
-        </span>
-        <h2 className="font-heading mt-6 text-4xl font-semibold text-foreground md:text-6xl">
-          Se você continuar não atendendo as expectativas dela, outro cara vai fazer isso.
-        </h2>
-        <p className="mt-6 text-xl font-medium text-muted-foreground md:text-2xl">
-          Você vai mesmo deixar isso acontecer?
-        </p>
-
-        <div className="mt-10">
-          <CTAButton size="lg" className="w-full sm:w-auto" href="https://pay.kiwify.com.br/Iqgobyg">
-            Não! QUERO RECONQUISTAR MINHA EX
-          </CTAButton>
-        </div>
-
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
-          <span className="flex items-center gap-1.5">
-            <Lock className="h-4 w-4 text-primary" /> Pagamento seguro
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Clock className="h-4 w-4 text-primary" /> Acesso imediato
-          </span>
-          <span className="flex items-center gap-1.5">
-            <CheckCircle className="h-4 w-4 text-primary" /> 7 dias de garantia
-          </span>
-        </div>
-      </div>
-    </Section>
-  );
-}
-
-
+/* ============================================================
+   Q9 — Como eu faço para começar? (Pricing)
+   ============================================================ */
 function Pricing() {
   const includes = [
     "Plano diário completo dos 15 dias",
@@ -572,22 +580,41 @@ function Pricing() {
     "Bônus: o que NUNCA fazer nos primeiros 7 dias",
   ];
 
+  const steps = [
+    "Clica no botão abaixo",
+    "Paga R$ 17,90 com segurança pela Kiwify",
+    "Recebe o acesso no seu e-mail em menos de 5 minutos",
+    "Começa o Dia 1 hoje mesmo",
+  ];
+
   return (
     <Section id="oferta" className="relative overflow-hidden bg-surface/40">
       <GlowingOrb className="left-1/2 top-0 h-[400px] w-[400px] -translate-x-1/2 bg-primary/25" />
 
       <div className="relative mx-auto max-w-2xl">
         <div className="text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-bold tracking-widest text-primary uppercase">
-            <Zap className="h-3.5 w-3.5" /> Oferta por tempo limitado
-          </span>
+          <SectionEyebrow>Como começar agora</SectionEyebrow>
           <h2 className="font-heading mt-5 text-4xl font-semibold text-foreground md:text-5xl">
-            Enquanto você hesita, outro cara já está ocupando seu lugar.
+            4 passos entre você e o Dia 1.
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Menos que uma pizza para parar de perder ela e ter um plano real para fazê-la voltar. Você decide.
+            Menos que uma pizza. Mais barato que a próxima mensagem errada que você vai mandar.
           </p>
         </div>
+
+        <ol className="mt-10 grid gap-3 sm:grid-cols-2">
+          {steps.map((s, i) => (
+            <li
+              key={s}
+              className="flex items-start gap-3 rounded-xl border border-border bg-surface p-4"
+            >
+              <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                {i + 1}
+              </span>
+              <span className="text-sm text-foreground">{s}</span>
+            </li>
+          ))}
+        </ol>
 
         <div className="mt-10 relative rounded-3xl border border-primary/30 bg-gradient-to-b from-surface-raised to-surface p-8 md:p-12 shadow-[0_0_60px_-20px_var(--color-glow)]">
           <div className="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -640,8 +667,63 @@ function Pricing() {
 
         <p className="mt-6 text-center text-sm text-muted-foreground flex items-center justify-center gap-2">
           <Eye className="h-4 w-4 text-primary" />
-          Pessoas estão vendo essa página agora. A vaga dela ainda é sua.
+          Enquanto você lê isso, outro cara já mandou mensagem pra ela.
         </p>
+      </div>
+    </Section>
+  );
+}
+
+/* ============================================================
+   Q10 — O que eu perco se não agir agora?
+   ============================================================ */
+function FinalCTA() {
+  const losses = [
+    "Perde ela para o próximo cara que aparecer na atenção dela.",
+    "Perde o pouco de valor que ainda restou na sua imagem.",
+    "Perde meses tentando consertar sozinho o que dá pra reverter em 15 dias.",
+    "Perde a chance de olhar pra trás e saber que pelo menos você tentou do jeito certo.",
+  ];
+
+  return (
+    <Section id="decisao" className="relative overflow-hidden">
+      <GlowingOrb className="left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 bg-primary/25" />
+
+      <div className="relative mx-auto max-w-4xl rounded-3xl border border-border bg-gradient-to-b from-surface to-background p-8 text-center md:p-16">
+        <SectionEyebrow>O que você perde se não agir</SectionEyebrow>
+        <h2 className="font-heading mt-6 text-4xl font-semibold text-foreground md:text-6xl">
+          Se você continuar não atendendo as expectativas dela, outro cara vai fazer isso.
+        </h2>
+        <p className="mt-6 text-xl font-medium text-muted-foreground md:text-2xl">
+          Você vai mesmo deixar isso acontecer por R$ 17,90?
+        </p>
+
+        <ul className="mx-auto mt-10 max-w-xl space-y-3 text-left">
+          {losses.map((l) => (
+            <li key={l} className="flex items-start gap-3 text-foreground">
+              <HeartCrack className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
+              <span className="text-base md:text-lg">{l}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-10">
+          <CTAButton size="lg" className="w-full sm:w-auto" href="https://pay.kiwify.com.br/Iqgobyg">
+            Não! QUERO RECONQUISTAR MINHA EX
+          </CTAButton>
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
+          <span className="flex items-center gap-1.5">
+            <Lock className="h-4 w-4 text-primary" /> Pagamento seguro
+          </span>
+          <span className="flex items-center gap-1.5">
+            <Clock className="h-4 w-4 text-primary" /> Acesso imediato
+          </span>
+          <span className="flex items-center gap-1.5">
+            <CheckCircle className="h-4 w-4 text-primary" /> 7 dias de garantia
+          </span>
+        </div>
       </div>
     </Section>
   );
@@ -667,12 +749,13 @@ function Index() {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <Hero />
-      <Problem />
-      <Solution />
-      <Features />
-      <Timeline />
-      <Testimonials />
-      <Objections />
+      <WhatYouGain />
+      <Proof />
+      <WhatBlocks />
+      <Blame />
+      <ActNow />
+      <Trust />
+      <HowItWorks />
       <FinalCTA />
       <Pricing />
       <Footer />
