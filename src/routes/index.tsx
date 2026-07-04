@@ -672,6 +672,7 @@ function Index() {
       <Features />
       <Timeline />
       <Testimonials />
+      <Objections />
       <FinalCTA />
       <Pricing />
       <Footer />
