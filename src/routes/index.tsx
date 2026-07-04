@@ -148,7 +148,7 @@ function Hero() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl animate-fade-up">
-          Um passo a passo com mensagens prontas, modelos de stories e postura certa para você parar de ser ignorado e fazer ela voltar a te enxergar como antes.
+          Não é motivação. Não é coach. É um passo a passo com mensagens prontas, stories e postura testada em centenas de casos reais para você virar o jogo em 15 dias, sem se humilhar e sem depender de sorte.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row animate-fade-up">
