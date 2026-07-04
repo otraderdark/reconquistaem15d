@@ -148,7 +148,7 @@ function Hero() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl animate-fade-up">
-          Um passo a passo com mensagens prontas, modelos de stories e postura certa para você parar de ser ignorado e fazer ela voltar a te enxergar como antes.
+          Não é motivação. Não é coach. É um passo a passo com mensagens prontas, stories e postura testada em centenas de casos reais para você virar o jogo em 15 dias, sem se humilhar e sem depender de sorte.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row animate-fade-up">
@@ -433,6 +433,97 @@ function Testimonials() {
   );
 }
 
+function Objections() {
+  const items = [
+    {
+      q: "O que faz isso ser diferente de tudo que já existe?",
+      a: "Não é vídeo motivacional nem coach de macho alfa. É um script diário com mensagens, stories e reações prontas para cada momento crítico dos 15 dias. Você não precisa pensar, só executar.",
+    },
+    {
+      q: "O que eu ganho com isso?",
+      a: "Você deixa de ser ignorado, para de agir no impulso e volta a ser visto como o cara que ela um dia escolheu — com desejo, curiosidade e vontade de voltar.",
+    },
+    {
+      q: "Como eu sei que isso realmente funciona?",
+      a: "O método já foi aplicado por centenas de homens em situações piores que a sua: bloqueado, trocado, humilhado. Quem seguiu o passo a passo mudou a dinâmica em dias, não meses.",
+    },
+    {
+      q: "O que está me impedindo de conseguir isso hoje?",
+      a: "Os seus próprios erros no impulso: mensagens de madrugada, stories forçados, discussões, insistência. Cada um deles empurra ela para outro. O método corta isso na raiz.",
+    },
+    {
+      q: "De quem é a culpa por eu ainda não ter isso?",
+      a: "Ninguém te ensinou postura depois do término. Você aprendeu a correr atrás, insistir e se explicar — exatamente o que faz ela perder o interesse. A culpa não é sua, mas a decisão de mudar é.",
+    },
+    {
+      q: "Por que eu preciso agir agora?",
+      a: "Cada dia parado é um dia a mais que ela se acostuma com a sua ausência — ou pior, com a presença de outro. A janela para reverter isso não fica aberta para sempre.",
+    },
+    {
+      q: "Por que eu devo confiar nisso?",
+      a: "Porque o método é direto, testado e vem com 7 dias de garantia incondicional. Se aplicar e não sentir diferença, devolvemos 100% do valor. O risco é todo nosso.",
+    },
+    {
+      q: "Como isso funciona?",
+      a: "15 dias divididos em 4 fases: Controle, Estabilização, Postura e Reaproximação. Cada dia tem uma tarefa clara, com mensagens e stories prontos para copiar e adaptar.",
+    },
+    {
+      q: "Como eu faço para começar?",
+      a: "Clica no botão, paga R$ 17,90 e recebe o acesso imediato no seu e-mail. Em menos de 5 minutos você já está executando o Dia 1.",
+    },
+    {
+      q: "O que eu perco se não agir agora?",
+      a: "Perde ela para outro cara, perde o pouco de valor que ainda restou aos olhos dela e perde meses tentando consertar sozinho o que dá para reverter em 15 dias.",
+    },
+  ];
+
+  return (
+    <Section id="perguntas" className="bg-surface/40">
+      <div className="mx-auto max-w-3xl text-center">
+        <span className="text-xs font-bold tracking-widest text-primary uppercase">
+          O que passa na sua cabeça agora
+        </span>
+        <h2 className="font-heading mt-4 text-4xl font-semibold text-foreground md:text-5xl">
+          Todas as dúvidas que você tem antes de agir — respondidas
+        </h2>
+        <p className="mt-4 text-lg text-muted-foreground">
+          Leia com calma. Depois disso, ou você age, ou aceita ver ela com outro.
+        </p>
+      </div>
+
+      <div className="mt-14 grid gap-4 md:grid-cols-2">
+        {items.map((item, i) => (
+          <div
+            key={item.q}
+            className="surface-card rounded-2xl p-6 transition-all duration-300 hover:border-primary/30"
+          >
+            <div className="flex items-start gap-3">
+              <span className="font-heading text-2xl font-bold text-primary/40">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3 className="font-heading text-lg font-semibold text-foreground">
+                  {item.q}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {item.a}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-12 text-center">
+        <CTAButton size="lg" href="https://pay.kiwify.com.br/Iqgobyg">
+          Chega de dúvida, quero começar
+        </CTAButton>
+      </div>
+    </Section>
+  );
+}
+
+
 function FinalCTA() {
   return (
     <Section id="decisao" className="relative overflow-hidden">
@@ -581,6 +672,7 @@ function Index() {
       <Features />
       <Timeline />
       <Testimonials />
+      <Objections />
       <FinalCTA />
       <Pricing />
       <Footer />
